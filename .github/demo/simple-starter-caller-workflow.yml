@@ -1,0 +1,25 @@
+name: simple-starter-caller-workflow
+
+on:
+  push:
+    branches: none # [ main ]
+  pull-request:
+    branches: none # [ main ]
+  
+  # Allows you to run this workflow manually from the action tabs
+  workflow_dispatch:
+
+jobs:
+  call-starter-hello-1:
+    uses: mattkds/starter-reusable-workflows/.github/workflows/starter-workflows/hello-world.yml@main
+    with:
+      username: tester-one
+    secrets:
+      token: ${{ secrets.TOKEN }}
+
+  call-starter-hello-2:
+    uses: mattkds/starter-reusable-workflows/.github/workflows/starter-workflows/hello-world.yml@main
+    with:
+      username: tester-two
+    secrets:
+      token: ${{ secrets.TOKEN }}
