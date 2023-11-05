@@ -1,0 +1,31 @@
+# This workflow will launch the test coverage retrieving for deepsource test coverage project
+
+name: Report test coverage to Deepsource
+
+on:
+  workflow_call:
+    inputs:
+      coverage_file:
+        required: true
+        type: string
+      programming_language:
+        required: true
+        type: string
+    secrets:
+      deepsource_dsn:
+        required: true
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK
+      uses: deepsourcelabs/test-coverage-action@master
+        with:
+          key: ${{ inputs.programming_language }}
+          coverage-file: ${{ inputs.coverage_file }}
+          dsn: ${{ secrets.deepsource_dsn }}
+
