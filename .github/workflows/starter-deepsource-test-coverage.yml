@@ -1,4 +1,8 @@
 # This workflow will launch the test coverage retrieving for deepsource test coverage project
+# A test coverage file should be produce by any plugin you use for your application
+# ===== Java Example
+# For a java application, we could use for example the Jacoco plugin.
+# The test phase of the maven plugin will create for example a test coverage file on target/site/jacoco/jacoco.xml (This path will be use for the coverage_file)
 
 name: Report test coverage to Deepsource
 
